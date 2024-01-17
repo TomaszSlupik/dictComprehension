@@ -57,3 +57,96 @@ print(myNumberList)
 
 print('---')
 
+# Ustaw wartość domyślną każdej właściwości na None.
+stock_indices = ['WIG20', 'mWIG40', 'sWIG80']
+properties = ['number of companies', 'companies', 'market capitalization']
+properties_none = [None, None, None]
+
+data_stock = {index: {prop: value for prop, value in zip(properties, properties_none)} for index in stock_indices}
+
+print(data_stock)
+
+print('---')
+
+# przekształć listę indices w poniższy słownik:
+# {0: 'WIG20', 1: 'mWIG40', 2: 'sWIG80'}
+
+indices = ['WIG20', 'mWIG40', 'sWIG80']
+indices_dict = {key: value for key, value in enumerate(indices)}
+print(indices_dict)
+
+print('---')
+
+# Potrzebujesz utworzyć nowy słownik, zawierający tylko te produkty, 
+# które są dostępne w magazynie i posortować je według ceny w kolejności rosnącej.
+products = [
+    {'id': 1, 'name': 'Keyboard', 'price': 100, 'in_stock': True},
+    {'id': 2, 'name': 'Mouse', 'price': 50, 'in_stock': False},
+    {'id': 3, 'name': 'Monitor', 'price': 200, 'in_stock': True},
+    {'id': 4, 'name': 'Speakers', 'price': 75, 'in_stock': True},
+    {'id': 5, 'name': 'Headphones', 'price': 90, 'in_stock': False},
+]
+
+products_available = sorted([myProduct for myProduct in products if myProduct['in_stock'] == True], key= lambda x: x['price'], reverse=False)
+dictMyProduct = {}
+
+for myProduct in products_available:
+    dictMyProduct [myProduct['name']] = myProduct['price']
+
+print(dictMyProduct)
+
+print('---')
+
+# nowy słownik, który będzie grupował loty według miejsc przylotu, a wartościami będą listy numerów lotów, które przylatują na dane miejsce.
+flights = [
+    {
+        'flight_number': 'ABC123',
+        'departure_time': '2023-04-12 08:00',
+        'flight_time': 2,
+        'departure_city': 'Kraków',
+        'arrival_city': 'Warszawa',
+    },
+    {
+        'flight_number': 'DEF456',
+        'departure_time': '2023-04-12 10:00',
+        'flight_time': 1,
+        'departure_city': 'Gdańsk',
+        'arrival_city': 'Warszawa',
+    },
+    {
+        'flight_number': 'GHI789',
+        'departure_time': '2023-04-12 14:00',
+        'flight_time': 3,
+        'departure_city': 'Warszawa',
+        'arrival_city': 'Kraków',
+    },
+    {
+        'flight_number': 'JKL012',
+        'departure_time': '2023-04-12 12:00',
+        'flight_time': 2,
+        'departure_city': 'Warszawa',
+        'arrival_city': 'Gdańsk',
+    },
+    {
+        'flight_number': 'MNO345',
+        'departure_time': '2023-04-12 16:00',
+        'flight_time': 1,
+        'departure_city': 'Kraków',
+        'arrival_city': 'Gdańsk',
+    },
+]
+
+flightGroupe = {}
+
+for flight in flights:
+    arrival_city = flight['arrival_city']
+    flight_number = flight['flight_number']
+
+    if arrival_city not in flightGroupe:
+        flightGroupe[arrival_city] = []
+
+    flightGroupe[arrival_city].append(flight_number)
+
+print(flightGroupe)
+
+print('---')
