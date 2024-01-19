@@ -150,3 +150,19 @@ for flight in flights:
 print(flightGroupe)
 
 print('---')
+
+# grupowanie lotów według miejsc przylotu, a wartościami będą 
+# listy lotów, które przylatują na dane miejsce, posortowane według godziny odlotu. 
+import json
+groupyByCity = {}
+
+for flight in flights:
+    city = flight['arrival_city']
+
+    if city not in groupyByCity:
+        groupyByCity[city] = []
+    
+    groupyByCity[city].append(flight)
+
+json_result = json.dumps(groupyByCity, ensure_ascii=False, indent=2)
+print(json_result)
